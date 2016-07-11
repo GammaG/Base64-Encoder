@@ -1,7 +1,8 @@
 package de.init.xbau.encoding;
 
 import java.nio.charset.StandardCharsets;
-import java.util.Base64;
+
+import org.mule.util.Base64;
 
 /**
  * Helper class for Base64 encoding/decoding
@@ -20,10 +21,8 @@ public class Base64Util {
 	 * @throws Exception
 	 */
 	public String encode(String text) throws Exception {
-
+		return Base64.encodeBytes(text.getBytes(StandardCharsets.UTF_8));
 		// encode with padding
-		return Base64.getEncoder().encodeToString(text.getBytes(StandardCharsets.UTF_8));
-
 	}
 
 	/**
@@ -37,7 +36,7 @@ public class Base64Util {
 	public String decode(String encoded) throws Exception {
 
 		// decode a String
-		byte[] bytes = Base64.getDecoder().decode(encoded);
+		byte[] bytes = Base64.decode(encoded);
 		return new String(bytes, StandardCharsets.UTF_8);
 
 	}

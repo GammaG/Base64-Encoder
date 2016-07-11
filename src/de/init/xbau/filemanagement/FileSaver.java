@@ -22,10 +22,6 @@ public class FileSaver {
 	public void saveContent(String filePath, String textToSave) throws IOException {
 
 		File file = generateNewFileName(filePath);
-		if (file.exists()) {
-			file.delete();
-			file = new File(filePath);
-		}
 
 		fw = new FileWriter(file.getAbsoluteFile());
 		bw = new BufferedWriter(fw);
@@ -33,6 +29,13 @@ public class FileSaver {
 
 		pw.println(textToSave);
 		pw.close();
+
+		System.out.println("Saved as " + file.getAbsoluteFile());
+	}
+
+	public void saveContent(String filePath, Object resultFile) {
+
+		File file = generateNewFileName(filePath);
 
 	}
 
